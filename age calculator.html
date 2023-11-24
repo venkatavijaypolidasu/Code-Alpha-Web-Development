@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #3498db, #e74c3c); /* Adjust the colors as needed */
+            color: #fff; /* text color on top of the background */
+        }
+        h1 {
+            color: #fff;
+        }
+        label {
+            font-size: 18px;
+            color: #fff;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            width: 80%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        p {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Age Calculator</h1>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob">
+
+    <br>
+
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <br>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateAge() {
+            // Get the selected date of birth
+            var dobInput = document.getElementById('dob');
+            var dobValue = new Date(dobInput.value);
+
+            // Get the current date
+            var currentDate = new Date();
+
+          
+            var age = currentDate.getFullYear() - dobValue.getFullYear();
+
+            if (currentDate.getMonth() < dobValue.getMonth() || 
+                (currentDate.getMonth() === dobValue.getMonth() && currentDate.getDate() < dobValue.getDate())) {
+                age--;
+            }
+
+            var resultElement = document.getElementById('result');
+            resultElement.textContent = 'Your age is: ' + age + ' years.';
+        }
+    </script>
+
+</body>
+</html>
